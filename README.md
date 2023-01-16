@@ -23,3 +23,6 @@ to ru run the local unittests
 
 
 ## How I would optimize more if I had more time
+
+### Multi-threaded transpose()
+the current function call of transpose() could save a lot of time by becoming a multithreaded function

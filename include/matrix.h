@@ -24,7 +24,7 @@ class Matrix{
         
         Matrix<T> operator*(const Matrix<T>& rhs); // multiplication
 
-        Matrix<T> transpose() const; // transpose
+        Matrix<T> transpose(); // transpose
 
     private:
         void multiplyMatrix(int i, const Matrix<T>& rhs, Matrix<T>& product);

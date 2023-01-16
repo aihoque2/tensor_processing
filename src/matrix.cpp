@@ -3,7 +3,7 @@
 
 #include "../include/matrix.h"
 
-#define MAX_THREADS 2 //set max_threads accordingly
+#define MAX_THREADS 4 //set max_threads accordingly
 
 template<typename T>
 Matrix<T>::Matrix(unsigned r, unsigned c, const T& default_value){
@@ -85,28 +85,12 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs){
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::transpose() const{
-
-    Matrix<T> result = Matrix(numCols, numRows, 0.0);
-
-    for (int i = 0; i < numRows; i++){
-        for(int j = 0; j < numCols; j++){
-            result[j][i] = this->mat[i][j];
-        }
-    }
-
-    return result;
-}
-
-
-/*
-template<typename T>
-Matrix<T> Matrix<T>::transpose() const{
+Matrix<T> Matrix<T>::transpose(){
     
     Matrix<T> result = Matrix(numCols, numRows, 0.0);    
     std::vector<std::thread> threads;
     for (int i = 0; i < numRows; i++){
-        threads.emplace_back(std::thread(&Matrix<T>::transposeRow, this, i, result));
+        threads.emplace_back(std::thread(&Matrix<T>::transposeRow, this, i, std::ref(result)));
         if (threads.size() >= MAX_THREADS || i == numRows - 1){
             for (int k = 0; k < threads.size(); k++){
                 threads[k].join(); 
@@ -117,7 +101,7 @@ Matrix<T> Matrix<T>::transpose() const{
 
     return result;
 }
-*/
+
 
 template<typename T>
 void Matrix<T>::multiplyMatrix(int i, const Matrix<T>& rhs, Matrix<T>& product){
