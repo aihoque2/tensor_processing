@@ -85,8 +85,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs){
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::transpose(){
-    
+Matrix<T> Matrix<T>::transpose() const{
     Matrix<T> result = Matrix(numCols, numRows, 0.0);    
     std::vector<std::thread> threads;
     for (int i = 0; i < numRows; i++){
@@ -102,7 +101,6 @@ Matrix<T> Matrix<T>::transpose(){
     return result;
 }
 
-
 template<typename T>
 void Matrix<T>::multiplyMatrix(int i, const Matrix<T>& rhs, Matrix<T>& product){
     for (int j =0; j < rhs.getCols(); j++){
@@ -113,7 +111,7 @@ void Matrix<T>::multiplyMatrix(int i, const Matrix<T>& rhs, Matrix<T>& product){
 }
 
 template<typename T>
-void Matrix<T>::transposeRow(int i, Matrix<T>& result){
+void Matrix<T>::transposeRow(int i, Matrix<T>& result) const{
     for (int j =0; j < numCols; j++){
         result[j][i] = mat[i][j];
     }

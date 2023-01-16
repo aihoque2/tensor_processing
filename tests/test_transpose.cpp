@@ -9,10 +9,10 @@ file to test matrix transpose
 
 int main(){
     //test transpose
-    std::vector<std::vector<double>> data1 = {{1.0, 2.0, 3.0}, {4.0,5.0,6.0}};
+    std::vector<std::vector<double>> data1 = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {9.0, 10.0, 11.0}};
     Matrix<double> mat1 = Matrix<double>(data1);
 
-    std::vector<std::vector<double>> transposeCheck= {{1.0, 4.0}, {2.0, 5.0}, {3.0, 6.0}};
+    std::vector<std::vector<double>> transposeCheck= {{1.0, 4.0, 9.0}, {2.0, 5.0, 10.0}, {3.0, 6.0, 11.0}};
 
     Matrix<double> transpose = mat1.transpose();
 

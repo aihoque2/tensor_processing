@@ -24,11 +24,11 @@ class Matrix{
         
         Matrix<T> operator*(const Matrix<T>& rhs); // multiplication
 
-        Matrix<T> transpose(); // transpose
+        Matrix<T> transpose() const; // transpose
 
     private:
         void multiplyMatrix(int i, const Matrix<T>& rhs, Matrix<T>& product);
-        void transposeRow(int i, Matrix<T>& result);
+        void transposeRow(int i, Matrix<T>& result) const;
         std::vector< std::vector<T> > mat;
         unsigned numRows;
         unsigned numCols;
