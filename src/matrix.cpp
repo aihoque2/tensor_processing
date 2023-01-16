@@ -3,7 +3,7 @@
 
 #include "../include/matrix.h"
 
-#define MAX_THREADS 4 //set max_threads accordingly
+#define MAX_THREADS 2 //set max_threads accordingly
 
 template<typename T>
 Matrix<T>::Matrix(unsigned r, unsigned c, const T& default_value){
@@ -74,14 +74,10 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& rhs){
     for (int i = 0; i < numRows; i++){
         threads.emplace_back(std::thread(&Matrix<T>::multiplyMatrix, this, i, std::ref(rhs), std::ref(product)));
         if (threads.size() >= MAX_THREADS || i == numRows - 1){
-            std::cout << "reach if " << std::endl;
-
             for (int k = 0; k < threads.size(); k++){
-                std::cout << "thread " << k << " joined!" << std::endl;
                 threads[k].join(); 
             }
             threads.clear();
-            std::cout << "threads cleared" << std::endl;
         }
     }
     

@@ -27,7 +27,6 @@ int main(){
     std::vector<std::vector<double>> multCheck = {{30.0, 36.0, 42.0}, {66.0, 81.0, 96.0}, {102.0, 126.0, 150.0}, {138.0, 171.0, 204.0}};
     Matrix<double> mat2 = Matrix<double>(data2);
     Matrix<double> product = mat1*mat2;
-    std::cout << "we got the product!" << std::endl;
     //check between 'product' and 'correct' to ensure data is equal between the two
     bool multiply_flag = true;
     for (int i = 0; i < product.getRows(); i++){
