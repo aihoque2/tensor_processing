@@ -3,7 +3,7 @@
 /*
 test_constructor.cpp
 
-file to test multiplication
+file to test constructor
 */
 
 
